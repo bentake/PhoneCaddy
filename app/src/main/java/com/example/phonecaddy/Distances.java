@@ -5,7 +5,7 @@ package com.example.phonecaddy;
  * This class provides functionality to update golf club distances based on the skill level
  * and apply modifications specific to female players.
  */
-public class distances {
+public class Distances {
 
   protected int pw;
   protected int sw;
@@ -27,7 +27,7 @@ public class distances {
    *
    * @param gender the gender of the player, used to adjust distances if necessary
    */
-  public distances(Gender gender){
+  public Distances(Gender gender){
     this.sw = 90;
     this.pw = 100;
     this.iron9 = 110;

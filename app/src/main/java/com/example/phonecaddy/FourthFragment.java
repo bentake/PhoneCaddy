@@ -106,7 +106,7 @@ public class FourthFragment extends Fragment {
 
         TypeOfGolfer skillLevel = TypeOfGolfer.valueOf(viewModel.getExperienceLevel().toUpperCase());
         DominantHand dominantHand = DominantHand.valueOf(viewModel.getDominantHand().toUpperCase());
-        golfer newGolfer = new golfer(person, skillLevel, dominantHand);
+        Golfer newGolfer = new Golfer(person, skillLevel, dominantHand);
 
         int distance = viewModel.getDistance();
         TypeOfCondition condition = TypeOfCondition.valueOf(viewModel.getWeatherCondition().toUpperCase());

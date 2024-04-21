@@ -4,9 +4,9 @@ package com.example.phonecaddy;
  * Represents a golfer with specific attributes including skill level, dominant hand,
  * personal information, and club distances adjusted for both skill level and gender.
  */
-public class golfer {
+public class Golfer {
 
-  protected distances clubdistances;
+  protected Distances clubdistances;
   protected Person person;
   protected TypeOfGolfer skillLevel;
   protected DominantHand dominantHand;
@@ -20,9 +20,9 @@ public class golfer {
    * @param skillLevel the skill level of the golfer, used to adjust club distances
    * @param dominantHand the dominant hand of the golfer
    */
-  public golfer(Person person, TypeOfGolfer skillLevel,
+  public Golfer(Person person, TypeOfGolfer skillLevel,
                 DominantHand dominantHand) {
-    this.clubdistances = new distances(person.getGender());
+    this.clubdistances = new Distances(person.getGender());
     this.person = person;
     this.skillLevel = skillLevel;
     this.dominantHand = dominantHand;

@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.android.volley:volley:1.2.1") // an HTTP library used for caching and making a network request in Android applications
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
