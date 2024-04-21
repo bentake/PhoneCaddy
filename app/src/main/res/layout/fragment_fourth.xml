@@ -24,14 +24,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="32dp" />
 
     <ImageView
         android:id="@+id/image_club9"
         android:layout_width="257dp"
         android:layout_height="506dp"
         android:contentDescription="@string/club_image_desc"
-        android:src="@drawable/club9"
+        android:src="@drawable/iron9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
