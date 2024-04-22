@@ -2,11 +2,13 @@ package com.example.phonecaddy;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,39 +34,38 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class extends AppCompatActivity and handles the user interactions
- * and API requests to fetch chat completions from OpenAI's API.
- *
- * This class manages the setup and interactions of a RecyclerView for displaying messages,
- * and uses Volley for network requests to OpenAI's API.
+ * This class represents the fifth fragment, which is responsible for displaying a chat interface
+ * where users can interact with he OpenAI GPT model via a RecyclerView.
+ * This class handles initializing the UI components,capturing user input, sending API requests,
+ * and processing responses to display chat messages.
  */
-public class FifthFragment extends AppCompatActivity {
+public class FifthFragment extends Fragment {
     private RecyclerView mRecyclerView; // RecyclerView for displaying messages
-    private MessageAdapter mAdapter; // Adapter for managing data in RecyclerView
+    private MessageAdapter mAdapter; // Adapter for managing and displaying messages in RecyclerView
     private EditText mEditText; // EditText for user to enter input
     private Button mButton; // Button to trigger API requests
-    private String apiUrl = "https://api.openai.com/v1/chat/completions"; // API URL for requests
+    private String apiUrl = "https://api.openai.com/v1/chat/completions"; // URL for the OpenAI API
     private String accessToken = "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"; // Access token for API authentication
-    private List <Message> mMessages; // List to hold Message objects for RecyclerView
+    private List <Message> mMessages; // List to store and manage messages displayed in the RecyclerView
 
     /**
-     * Overrides the onCreate method from AppCompatActivity to setup the UI and interactions.
+     * Inflates the layout for this fragment, initializes UI components, and sets up the RecyclerView.
      *
-     * @param savedInstanceState If the activity is being re-initialized after previously being shut down
-     *                           then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
-     *                           Otherwise it is null.
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return Returns the View for the fragment's UI, or null.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mRecyclerView = findViewById(R.id.recycler_view);
-        mEditText = findViewById(R.id.edit_text);
-        mButton = findViewById(R.id.button);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.activity_main, container, false);
+        mRecyclerView = view.findViewById(R.id.recycler_view);
+        mEditText = view.findViewById(R.id.edit_text);
+        mButton = view.findViewById(R.id.button);
         mMessages = new ArrayList <>();
         mAdapter = new MessageAdapter(mMessages);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +73,13 @@ public class FifthFragment extends AppCompatActivity {
                 callAPI();
             }
         });
+        return view;
     }
 
     /**
-     * Calls the OpenAI API to get chat completions based on the user's input.
-     * Constructs a JSON request body and sends it using a POST request.
-     * Handles responses and errors by updating the RecyclerView and logging errors respectively.
+     * Calls the OpenAI API using Volley to get chat completions based on the user's input.
+     * It constructs a JSON request body and sends it using a POST request. Responses are handled
+     * by updating the RecyclerView with the new messages.
      */
     private void callAPI() {
         String text = mEditText.getText().toString();
@@ -148,6 +150,6 @@ public class FifthFragment extends AppCompatActivity {
         RetryPolicy policy = new DefaultRetryPolicy(timeoutMs, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         request.setRetryPolicy(policy);
         // Add the request to the RequestQueue
-        MySingleton.getInstance(this).addToRequestQueue(request);
+        MySingleton.getInstance(getContext()).addToRequestQueue(request);
     }
 }
