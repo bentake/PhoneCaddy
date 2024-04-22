@@ -96,7 +96,7 @@ public class FifthFragment extends Fragment {
     private void navigateToHome() {
         if (getActivity() != null) {
             NavHostFragment.findNavController(FifthFragment.this)
-                    .navigate(R.id.action_FifthFragment_to_FirstFragment); // TODO: add on nav graph xml
+                    .navigate(R.id.action_FifthFragment_to_FirstFragment);
         }
     }
 
