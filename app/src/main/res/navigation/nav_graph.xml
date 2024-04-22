@@ -66,8 +66,7 @@
     <fragment
         android:id="@+id/FifthFragment"
         android:name="com.example.phonecaddy.FifthFragment"
-        android:label="FifthFragment"
-        tools:layout="@layout/fragment_fourth">
+        tools:layout="@layout/fragment_fifth">
 
         <action
             android:id="@+id/action_FifthFragment_to_FirstFragment"
