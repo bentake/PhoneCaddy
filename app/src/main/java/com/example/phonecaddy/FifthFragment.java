@@ -120,7 +120,7 @@ public class FifthFragment extends Fragment {
             messages.put(message);
             requestBody.put("messages", messages);
             requestBody.put("model", "gpt-4-turbo"); // latest GPT model available to public
-            requestBody.put("max_tokens", 100); // limit length of response to 100 tokens
+            requestBody.put("max_tokens", 4096); // determines the length of response
             requestBody.put("temperature", 1); // modifies model behavior
         } catch (JSONException e) {
             Log.e("JSON Error", "Failed to create JSON: " + e.getMessage());
