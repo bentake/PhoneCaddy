@@ -59,11 +59,12 @@ public class FifthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_fifth, container, false);
+
         mRecyclerView = view.findViewById(R.id.recycler_view);
         mEditText = view.findViewById(R.id.edit_text);
         mButton = view.findViewById(R.id.button);
-        mMessages = new ArrayList <>();
+        mMessages = new ArrayList<>();
         mAdapter = new MessageAdapter(mMessages);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
@@ -75,6 +76,7 @@ public class FifthFragment extends Fragment {
         });
         return view;
     }
+
 
     /**
      * Calls the OpenAI API using Volley to get chat completions based on the user's input.
