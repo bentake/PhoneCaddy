@@ -60,7 +60,7 @@ public class FirstFragment extends Fragment {
 
         binding.buttonChatMode.setOnClickListener(v-> {
             NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_FirstFragment_to_SecondFragment); // TODO: Change to First Fragment to Fifth
+                    .navigate(R.id.action_FirstFragment_to_SecondFragment);
         });
     }
 
