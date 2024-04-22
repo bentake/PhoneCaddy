@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +36,7 @@ import java.util.Map;
 
 /**
  * This class represents the fifth fragment, which is responsible for displaying a chat interface
- * where users can interact with he OpenAI GPT model via a RecyclerView.
+ * where users can interact with the OpenAI GPT model via a RecyclerView.
  * This class handles initializing the UI components,capturing user input, sending API requests,
  * and processing responses to display chat messages.
  */
@@ -43,7 +44,8 @@ public class FifthFragment extends Fragment {
     private RecyclerView mRecyclerView; // RecyclerView for displaying messages
     private MessageAdapter mAdapter; // Adapter for managing and displaying messages in RecyclerView
     private EditText mEditText; // EditText for user to enter input
-    private Button mButton; // Button to trigger API requests
+    private Button mButton; // Send Button to trigger API requests
+    private Button bButton; // Back Button to go back to the home page
     private String apiUrl = "https://api.openai.com/v1/chat/completions"; // URL for the OpenAI API
     private String accessToken = "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"; // Access token for API authentication
     private List <Message> mMessages; // List to store and manage messages displayed in the RecyclerView
@@ -60,23 +62,43 @@ public class FifthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fifth, container, false);
-
         mRecyclerView = view.findViewById(R.id.recycler_view);
         mEditText = view.findViewById(R.id.edit_text);
-        mButton = view.findViewById(R.id.button);
+        mButton = view.findViewById(R.id.button); // Send button
+        bButton = view.findViewById(R.id.button_back); // Back button
         mMessages = new ArrayList<>();
         mAdapter = new MessageAdapter(mMessages);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+
+        // Set up the send button to trigger API requests
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 callAPI();
             }
         });
+
+        // Set up the back button to go back to the home page
+        bButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToHome();
+            }
+        });
+
         return view;
     }
 
+    /**
+     * Navigate back to the first fragment i.e. the home page when the user triggers the function call
+     */
+    private void navigateToHome() {
+        if (getActivity() != null) {
+            NavHostFragment.findNavController(FifthFragment.this)
+                    .navigate(R.id.action_FifthFragment_to_FirstFragment); // TODO: add on nav graph xml
+        }
+    }
 
     /**
      * Calls the OpenAI API using Volley to get chat completions based on the user's input.
