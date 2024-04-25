@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-
+/**
+ * This class contains all the unit test for the ViewModel of Pocket Caddy
+ */
 public class GolferViewModelTest {
     private GolferViewModel testmodel;
     @Before
@@ -12,6 +14,9 @@ public class GolferViewModelTest {
         testmodel = new GolferViewModel();
     }
 
+    /**
+     * Tests whether getFirstName() gets the first name correctly
+     */
     @Test
     public void getFirstName() {
         testmodel.setFirstName("Ben");
@@ -20,6 +25,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getFirstName(), "Rock");
     }
 
+    /**
+     * Tests whether setFirstName() sets the first name correctly
+     */
     @Test
     public void setFirstName() {
         testmodel.setFirstName("Fish");
@@ -28,6 +36,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getFirstName(), "Mike");
     }
 
+    /**
+     * Tests whether getLastName() gets the last name correctly
+     */
     @Test
     public void getLastName() {
         testmodel.setLastName("Ben");
@@ -36,6 +47,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getLastName(), "Rock");
     }
 
+    /**
+     * Tests whether setLastName() sets the last name correctly
+     */
     @Test
     public void setLastName() {
         testmodel.setLastName("Fish");
@@ -44,6 +58,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getLastName(), "Mike");
     }
 
+    /**
+     * Tests whether getAge() gets the age correctly
+     */
     @Test
     public void getAge() {
         testmodel.setAge(24);
@@ -52,6 +69,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getAge(), 25);
     }
 
+    /**
+     * Tests whether setAge() sets the age correctly
+     */
     @Test
     public void setAge() {
         testmodel.setAge(26);
@@ -60,6 +80,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getAge(), 27);
     }
 
+    /**
+     * Tests whether getGender() gets the gender correctly
+     */
     @Test
     public void getGender() {
         testmodel.setGender("MENS");
@@ -68,6 +91,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getGender(), "WOMENS");
     }
 
+    /**
+     * Tests whether setGender() sets the gender correctly
+     */
     @Test
     public void setGender() {
         testmodel.setGender("MENS");
@@ -76,6 +102,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getGender(), "WOMENS");
     }
 
+    /**
+     * Tests whether getExperience() gets the experience level correctly
+     */
     @Test
     public void getExperienceLevel() {
         testmodel.setExperienceLevel("BEGINNER");
@@ -84,6 +113,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getExperienceLevel(), "AMATEUR");
     }
 
+    /**
+     * Tests whether setExperienceLevel() sets the experience level correctly
+     */
     @Test
     public void setExperienceLevel() {
         testmodel.setExperienceLevel("ADVANCED");
@@ -92,6 +124,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getExperienceLevel(), "PRO");
     }
 
+    /**
+     * Tests whether getDominantHand() gets the dominant hand correctly
+     */
     @Test
     public void getDominantHand() {
         testmodel.setDominantHand("RIGHT");
@@ -100,6 +135,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getDominantHand(), "LEFT");
     }
 
+    /**
+     * Tests whether setDominantHand() sets the dominant hand correctly
+     */
     @Test
     public void setDominantHand() {
         testmodel.setDominantHand("RIGHT");
@@ -108,6 +146,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getDominantHand(), "LEFT");
     }
 
+    /**
+     * Tests whether getDistance() gets the distance correctly
+     */
     @Test
     public void getDistance() {
         testmodel.setDistance(90);
@@ -116,6 +157,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getDistance(), 100);
     }
 
+    /**
+     * Tests whether setDistance() sets the distance correctly
+     */
     @Test
     public void setDistance() {
         testmodel.setDistance(110);
@@ -124,6 +168,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getDistance(), 120);
     }
 
+    /**
+     * Tests whether getWeatherCondition() gets the weather condition correctly
+     */
     @Test
     public void getWeatherCondition() {
         testmodel.setWeatherCondition("RAINY");
@@ -132,6 +179,9 @@ public class GolferViewModelTest {
         assertEquals(testmodel.getWeatherCondition(), "WINDY");
     }
 
+    /**
+     * Tests whether setWeatherCondition() sets the weather condition correctly
+     */
     @Test
     public void setWeatherCondition() {
         testmodel.setWeatherCondition("CLEAR");
